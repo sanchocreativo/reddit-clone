@@ -1,0 +1,28 @@
+@import "../../../shared//styles/variables.scss";
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > .loader {
+        margin: 0 0 0 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            width: 20px !important;
+            height: 20px !important;
+            fill: $fontColor;
+        }
+
+        &.theme {
+            svg {
+                fill: $mainFontColor;
+            }
+        }
+    }
+}

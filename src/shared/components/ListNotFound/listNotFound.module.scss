@@ -1,0 +1,28 @@
+@import '../../../shared/styles/variables.scss';
+
+.listNotFound {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    line-height: 1.6;
+    & > .title {
+        color: $mainFontColor;
+        font-size: 16px;
+        font-weight: 600;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    & > .subTitle {
+        color: $thirdFontColor;
+        font-size: 12px;
+        font-weight: 400;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

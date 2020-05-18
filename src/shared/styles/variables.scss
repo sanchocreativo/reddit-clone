@@ -1,0 +1,55 @@
+$fontFamily: Montserrat, sans-serif;
+
+$primaryColor: var(--primaryColor);
+$primaryColorHover: var(--primaryColorHover);
+$primaryColorTransparent: var(--primaryColorTransparent);
+
+$backgroundColor: var(--backgroundColor);
+$secondBackgroundColor: var(--secondBackgroundColor);
+$thirdBackgroundColor: var(--thirdBackgroundColor);
+$filterContentBackgroundColor: var(--filterContentBackgroundColor);
+$avatarContentBackgroundColor: var(--avatarContentBackgroundColor);
+$historyItemBackground: var(--historyItemBackground);
+$showcaseBackgroundColor: var(--showcaseBackgroundColor);
+$primaryColor-gradient: var(--primaryColor-gradient);
+
+$mainFontColor: var(--mainFontColor);
+$fontColor: var(--fontColor);
+$secondFontColor: var(--secondFontColor);
+$thirdFontColor: var(--thirdFontColor);
+
+$transparentDarkColor: var(--transparentDarkColor);
+
+$successColor: var(--successColor);
+$errorColor: var(--errorColor);
+
+$darkGrey_1: var(--darkGrey_1);
+$darkGrey_2: var(--darkGrey_2);
+
+$ligthgrey_1: var(--ligthgrey_1);
+$ligthgrey_2: var(--ligthgrey_2);
+$ligthgrey_3: var(--ligthgrey_3);
+
+$listItemDivider: var(--listItemDivider);
+$skeletonBackgroundColor: var(--skeletonBackgroundColor);
+
+$boxshadow: var(--boxshadow);
+$borderRadius: var(--borderRadius);
+$defaultPadding: var(--defaultPadding);
+
+:export {
+    borderRadiusCard: $borderRadius;
+    backgroundColor: $backgroundColor;
+    secondBackgroundColor: $secondBackgroundColor;
+    defaultPadding: $defaultPadding;
+    fontColor: $fontColor;
+    mainFontColor: $mainFontColor;
+    thirdFontColor: $thirdFontColor;
+    secondFontColor: $secondFontColor;
+    defaultBorderRadius: $borderRadius;
+    thirdBackgroundColor: $thirdBackgroundColor;
+    skeletonBackgroundColor: $skeletonBackgroundColor;
+    darkGrey_1: $darkGrey_1;
+    ligthgrey_2: $ligthgrey_2;
+    fontFamily: $fontFamily;
+}

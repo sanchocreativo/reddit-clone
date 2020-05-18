@@ -1,0 +1,190 @@
+.f5 {
+    flex: 0.05 !important;
+    box-sizing: border-box;
+}
+.f10 {
+    flex: 0.1 !important;
+    box-sizing: border-box;
+    max-width: 10%;
+}
+
+.f15 {
+    flex: 0.15 !important;
+    box-sizing: border-box;
+}
+
+.f20 {
+    flex: 0.2 !important;
+    box-sizing: border-box;
+}
+
+.f25 {
+    flex: 0.25 !important;
+    box-sizing: border-box;
+}
+
+.f30 {
+    flex: 0.3 !important;
+    box-sizing: border-box;
+}
+
+.f35 {
+    flex: 0.35 !important;
+    box-sizing: border-box;
+}
+
+.f40 {
+    flex: 0.4 !important;
+    box-sizing: border-box;
+}
+
+.f45 {
+    flex: 0.45 !important;
+    box-sizing: border-box;
+}
+
+.f50 {
+    flex: 0.5 !important;
+    box-sizing: border-box;
+}
+
+.f60 {
+    flex: 0.6 !important;
+    box-sizing: border-box;
+}
+
+.f70 {
+    flex: 0.7 !important;
+    box-sizing: border-box;
+}
+
+.f80 {
+    flex: 0.8 !important;
+    box-sizing: border-box;
+}
+
+.f95 {
+    flex: 0.95 !important;
+    box-sizing: border-box;
+}
+
+.f100 {
+    flex: 1 1 100% !important;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.fauto {
+    flex: 1 1 100% !important;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.linkViewDetail {
+    margin: 8px;
+    text-decoration: unset !important;
+    color: unset !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end !important;
+    cursor: pointer;
+    user-select: none;
+
+    & > div,
+    & > a {
+        display: flex;
+        justify-content: flex-end;
+        & > svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+
+        &:hover {
+            & > span,
+            & > a span {
+                color: $primaryColor;
+            }
+            & > svg {
+                fill: $primaryColor;
+            }
+        }
+
+        &:active {
+            & > span,
+            & > a span {
+                color: $primaryColorTransparent;
+            }
+            & > svg {
+                fill: $primaryColorTransparent;
+            }
+        }
+    }
+}
+
+.textAlignCenter {
+    text-align: center;
+}
+
+.textAlignRigth {
+    text-align: right;
+}
+
+.overflowAuto {
+    overflow: auto;
+}
+
+.divColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.divRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.divRow,
+.divColumn {
+    &.marginBottom {
+        margin: 0 0 10px 0;
+    }
+
+    &.spaceBetween {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &.center {
+        justify-content: center;
+        align-items: center;
+    }
+
+    &.flexEnd {
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    &.unsetAlignItems {
+        align-items: unset;
+    }
+}
+
+.answerButton {
+    margin: 4px;
+    padding: 8px 16px;
+    border: 1px solid $primaryColor;
+    color: $primaryColor;
+    text-align: center;
+    border-radius: 4px;
+    min-width: 60px;
+    font-size: 12px;
+    box-sizing: border-box;
+
+    &.success {
+        color: rgb(173, 209, 0);
+        border: 1px solid rgb(173, 209, 0);
+    }
+}
