@@ -1,0 +1,92 @@
+@supports (--css: variables) {
+    [data-theme='dark'] {
+        --primaryColor: #EA1B36;
+        --primaryColorHover: #981016;
+        --primaryColorTransparent: rgba(185, 19, 26, 0.3);
+
+        --backgroundColor: #1d1d21;
+        --secondBackgroundColor: #1d1d21;
+        --thirdBackgroundColor: #2e2e34;
+        --filterContentBackgroundColor: #18181d;
+        --historyItemBackground: #2e2e34;
+        --showcaseBackgroundColor: #18181d;
+
+        --primaryColor-gradient: linear-gradient(
+            180deg,
+            rgba(41, 31, 28, 1) 0%,
+            rgba(41, 31, 28, 1) 21%,
+            rgba(76, 82, 82, 1) 82%,
+            rgba(76, 82, 82, 1) 100%
+        );
+
+        --fontColor: whitesmoke;
+        --mainFontColor: whitesmoke;
+        --secondFontColor: whitesmoke;
+        --thirdFontColor: #9c9c9d;
+
+        --transparentDarkColor: rgba(0, 0, 0, 0.2);
+
+        --successColor: #4caf50;
+        --errorColor: #f44336;
+
+        --darkGrey_1: #2e2e34;
+        --darkGrey_2: #7a7a7a;
+
+        --ligthgrey_1: #e0e0e0;
+        --ligthgrey_2: #eeeeee;
+        --ligthgrey_3: #757575;
+
+        --listItemDivider: #e0e0e0;
+        --skeletonBackgroundColor: #18181d;
+
+        --boxshadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
+        --borderRadius: 4px;
+        --defaultPadding: 16px;
+    }
+    [data-theme='light'] {
+        --primaryColor: #EA1B36;
+        --primaryColorHover: #981016;
+        --primaryColorTransparent: rgba(185, 19, 26, 0.3);
+
+        // --backgroundColor: #18181d;
+        --backgroundColor: #1d1d21;
+        --secondBackgroundColor: #f4f4f4;
+        --thirdBackgroundColor: #ececec;
+        --filterContentBackgroundColor: #fafafa;
+        --avatarContentBackgroundColor: #1d1d21;
+        --historyItemBackground: #2121;
+        --showcaseBackgroundColor: #ececec;
+
+        --primaryColor-gradient: linear-gradient(
+            180deg,
+            rgba(41, 31, 28, 1) 0%,
+            rgba(41, 31, 28, 1) 21%,
+            rgba(76, 82, 82, 1) 82%,
+            rgba(76, 82, 82, 1) 100%
+        );
+
+        --mainFontColor: #262d3d;
+        --fontColor: whitesmoke;
+        --secondFontColor: #212121;
+        --thirdFontColor: #9c9c9d;
+
+        --transparentDarkColor: rgba(0, 0, 0, 0.2);
+
+        --successColor: #4caf50;
+        --errorColor: #f44336;
+
+        --darkGrey_1: #2e2e34;
+        --darkGrey_2: #7a7a7a;
+
+        --ligthgrey_1: #e0e0e0;
+        --ligthgrey_2: #eeeeee;
+        --ligthgrey_3: #757575;
+
+        --listItemDivider: #262d3d;
+        --skeletonBackgroundColor: #e0e0e0;
+
+        --boxshadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
+        --borderRadius: 4px;
+        --defaultPadding: 16px;
+    }
+}

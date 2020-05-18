@@ -1,0 +1,95 @@
+@import '../../shared/styles/variables.scss';
+
+.grid {
+    display: grid;
+    grid-auto-columns: 63px auto;
+    grid-auto-rows: minmax(0, auto);
+    height: inherit;
+
+    & > .main {
+        grid-area: content;
+        grid-column: 2 / 2;
+        grid-row: 1;
+        background: $backgroundColor;
+        padding: 4px 8px 4px 8px;
+        display: flex;
+        flex-direction: column;
+        background: $secondBackgroundColor;
+        color: $secondFontColor;
+        align-items: center;
+
+        & > .header {
+            padding: 0px 16px 0 16px;
+            height: 56px;
+            min-height: 56px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            & > .content {
+                display: flex;
+                flex-direction: column;
+                & > .titleContent {
+                    display: flex;
+                    align-items: center;
+                    user-select: none;
+
+                    & > .icon {
+                        width: 24px;
+
+                        & > * > div {
+                            width: 20px;
+                            height: 20px;
+                            & button {
+                                padding: 0;
+                                margin: 0;
+                                max-width: 20px;
+                                max-height: 20px;
+                                min-width: 20px;
+                                min-height: 20px;
+                            }
+                        }
+
+                        & svg {
+                            fill: $secondFontColor;
+                            height: 24px;
+                            width: 24px;
+                            min-height: 24px;
+                            min-width: 24px;
+                            max-height: 24px;
+                            max-width: 24px;
+                        }
+                        & button {
+                            margin-left: 0 !important;
+                        }
+                    }
+
+                    & > .title {
+                        font-weight: 600;
+                        font-size: 21px;
+                    }
+                }
+
+                & > .subTitle {
+                    user-select: none;
+                    margin: 4px 0 0 4px;
+                    font-size: 12px;
+                    color: $darkGrey_2;
+                }
+            }
+        }
+        & > .wrapper{
+            flex: 1;
+            padding: 8px 16px 0 16px;
+            display: flex;
+            max-height: calc(100% - 65px);
+            height: 100%;
+        }
+
+        & > .header, & > .wrapper {
+            // max-width: 1300px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@import '../../../shared/styles/variables.scss';
+@import '../../../shared/styles/common.scss';
+
+.content {
+    flex: 1;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 80px);
+}
+
+.minWidth {
+    min-width: 130px;
+}
