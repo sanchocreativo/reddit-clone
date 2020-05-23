@@ -4,7 +4,7 @@ import { postsSVG } from '../shared/helpers/icons';
 const EntryPoint = lazy(() => import( /* webpackChunkName: "posts" */ './components/EntryPoint'));
 const PostsLoader = lazy(() => import( /* webpackChunkName: "PostsLoader" */ './components/PostsLoader'));
 
-export const defaultPath = '/PostsLoader';
+export const defaultPath = '/posts';
 
 export const innerRoutes = [
     {
@@ -13,11 +13,11 @@ export const innerRoutes = [
         exact: true,
         icon: postsSVG,
         title: {
-            key: "",
+            key: "posts",
             plural: false
         },
         subTitle: {
-            key: '',
+            key: 'posts',
             plural: false
         }
     },

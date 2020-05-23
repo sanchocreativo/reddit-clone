@@ -12,3 +12,36 @@
 .minWidth {
     min-width: 130px;
 }
+
+.flexPostSingle{
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 50%;
+
+    & .author{
+        color: $thirdFontColor;
+        font-weight: normal;
+    }
+
+    & .title{
+        color: $mainFontColor;
+    }
+
+    & .content{
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 30%;
+        margin-left: 15px;
+    }
+    & .thumbnail{
+        border-radius: 5px;
+        object-fit: cover;
+        width:75px;
+        height: 75px;
+        box-shadow: $boxshadow;
+    }
+}
+$breakpoint-tablet: 768px;
+@media (min-width: $breakpoint-tablet) {
+  
+}
