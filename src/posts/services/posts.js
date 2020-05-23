@@ -5,7 +5,7 @@ import { makeQuery } from "../../shared/helpers/commons";
 export const getPosts = (filters) =>
     axios({
         method: 'get',
-        url: `${redditDomain}/top?${makeQuery(filters)}`,
+        url: `${redditDomain}/top.json?${makeQuery(filters)}`,
         headers: {
             notCachedResponse: true
         },

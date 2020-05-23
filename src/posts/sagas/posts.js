@@ -10,9 +10,9 @@ import { showGlobalError } from '../../app/actions/app';
 const getPostsWorker = function* ({ payload: { filters } }) {
     try {
 
-        const { data: { posts } } = yield call(getPosts, filters);
+        const { data: {data : {children}} } = yield call(getPosts, filters);
 
-        yield put(getPostsSuccess(posts));
+        yield put(getPostsSuccess(children));
 
     } catch (err) {
         yield put(showGlobalError(true, err));

@@ -6,7 +6,7 @@ import {
 
 const initialState = {
     fetching: false,
-    posts: [],
+    data: [],
     total: 0
 };
 
@@ -16,14 +16,14 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 fetching: true,
-                posts: []
+                data: []
             };
         }
         case GET_POSTS_SUCCESS: {
             return {
                 ...state,
                 fetching: false,
-                posts:action.payload.posts
+                data:action.payload.data
             };
         }
         case GET_POSTS_FAILURE: {

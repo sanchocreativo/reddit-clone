@@ -10,10 +10,10 @@ export const getPostsRequest = (filters = {}) => ({
     }
 });
 
-export const getPostsSuccess = (posts = []) => ({
+export const getPostsSuccess = (data = []) => ({
     type: GET_POSTS_SUCCESS,
     payload: {
-        posts
+        data
     }
 });
 
