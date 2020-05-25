@@ -1,8 +1,8 @@
-@import '../../shared/styles/variables.scss';
+@import '../../../shared/styles/variables.scss';
 
 .grid {
     display: grid;
-    grid-auto-columns: 63px auto;
+    grid-auto-columns: 0px auto;
     grid-auto-rows: minmax(0, auto);
     height: inherit;
 

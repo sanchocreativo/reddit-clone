@@ -13,7 +13,7 @@ export const innerRoutes = [
         exact: true,
         icon: postsSVG,
         title: {
-            key: "posts",
+            key: "Reddit Posts",
             plural: false
         },
         subTitle: {
@@ -29,11 +29,11 @@ const posts = {
     exact: false,
     icon: postsSVG,
     title: {
-        key: 'posts',
+        key: 'Reddit Posts',
         plural: false
     },
     subTitle: {
-        key: 'posts_detail',
+        key: 'Top 50 Posts of reddit.com/top',
         plural: false
     },
     innerRoutes: innerRoutes
