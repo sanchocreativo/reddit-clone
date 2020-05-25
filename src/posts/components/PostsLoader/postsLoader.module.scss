@@ -21,6 +21,23 @@
     & .author{
         color: $thirdFontColor;
         font-weight: normal;
+        font-size: 12px;
+        display: flex;
+        margin-bottom: 5px;
+    }
+
+    & .subreddit {
+        font-size: 13px;
+        font-weight: bold;
+        color: $mainFontColor;
+        margin-right: 10px;
+        vertical-align: baseline;
+    }
+
+    & .date {
+        font-size: 12px;
+        margin-left: 10px;
+        vertical-align: baseline;
     }
 
     & .title{

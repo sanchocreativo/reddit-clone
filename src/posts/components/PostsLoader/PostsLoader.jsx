@@ -8,6 +8,7 @@ import ListContainer from '../../../shared/components/ListContainer';
 import { useDispatch, useSelector } from "react-redux";
 import { getPostsRequest } from '../../actions/posts'
 import { postsSelector } from "../../selectors/posts"
+import moment from 'moment';
 
 const defaultFilters = {
     limit: 10
@@ -20,7 +21,7 @@ const PostsLoader = ({ history }) => {
     const { fetching, data } = useSelector(postsSelector);
 
     const selectposts = (index) => {
-        setNotification(data[index]);
+        setNotification(data[index]["data"]);
         setIsOpenDialog(true);
     }
 
@@ -52,14 +53,18 @@ const PostsLoader = ({ history }) => {
                         totalItems={"50"}
                     >
                         {
-                            data.map((pushNoti, index) => (
+                            data.map((post, index) => (
                                 <div key={index} onClick={selectposts.bind(this, index)}>
                                     <div className={styles.flexPostSingle}>
-                                        <img className={styles.thumbnail} src={pushNoti.data.thumbnail} alt={pushNoti.data.title} />
+                                        <img className={styles.thumbnail} src={post.data.thumbnail} alt={post.data.title} />
                                       
                                         <div className={styles.content}>
-                                            <div className={styles.author}>{pushNoti.data.author}</div>
-                                            <div className={styles.title}>{pushNoti.data.title}</div>
+                                            <div className={styles.author}>
+                                            <span className={styles.subreddit}>{post.data.subreddit_name_prefixed}</span>
+                                            <span className={styles.authorName}>Posted by {post.data.author}</span>
+                                                <span className={styles.date}>{moment.unix(post.data.created_utc).fromNow()}</span>
+                                            </div>
+                                            <div className={styles.title}>{post.data.title}</div>
                                             
                                         </div>
                                     </div>
@@ -73,8 +78,13 @@ const PostsLoader = ({ history }) => {
                 {
                     isOpenDialog &&
                     <div open={isOpenDialog} onClick={closeOpenDialog}  >
-                        {notification}
-                        hola soy pepe
+
+                        {notification.title}
+
+                        {notification.url &&
+                            <img src={notification.url} alt={notification.title} />
+                        }
+                        
                     </div>
                 }
 
