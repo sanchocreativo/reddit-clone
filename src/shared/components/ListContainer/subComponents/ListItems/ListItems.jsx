@@ -3,7 +3,7 @@ import ListItem from './subComponents/ListItem';
 import Scrolly from './subComponents/Scrolly';
 
 const ListItems = ({ listItems, className, ...props }) => {
-
+    
     return (
         <Scrolly className={className} listItems={listItems}  {...props}>
             {

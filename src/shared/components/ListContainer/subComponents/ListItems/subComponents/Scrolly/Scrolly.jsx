@@ -6,6 +6,7 @@ import styles from './scrolly.module.scss';
 
 const ListItems = ({ children, className, listItems, fetchingMoreItems, totalItems, onScrollBottomAction = () => { } }) => {
 
+    
     const getMoreItems = () => {
         if (typeof fetchingMoreItems !== "undefined" && !fetchingMoreItems && listItems.length < totalItems) {
             onScrollBottomAction();
@@ -14,6 +15,7 @@ const ListItems = ({ children, className, listItems, fetchingMoreItems, totalIte
 
     return (
         <div className={className} onScroll={scrolly.bind(this, getMoreItems)}>
+            
             {children}
             {
                 fetchingMoreItems &&

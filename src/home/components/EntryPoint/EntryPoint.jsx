@@ -12,17 +12,13 @@ import { defaultPath as postsPath } from "../../../posts/routes";
 
 const EntryPoint = withRouter(({
     innerRoutes,
-    changeConfigChildRoute,
     location
 }) => {
 
     return (
 
         <div className={styles.grid}>
-            {/* <SideBar
-                changeConfigChildRoute={changeConfigChildRoute}
-                locationPathName={location.pathname}
-            /> */}
+         
             <div className={styles.main}>
 
                 <Header innerRoutes={innerRoutes} location={location} />

@@ -12,7 +12,8 @@ const getPostsWorker = function* ({ payload: { filters } }) {
 
         const { data: {data : {children}} } = yield call(getPosts, filters);
 
-        yield put(getPostsSuccess(children));
+        const total = 50;
+        yield put(getPostsSuccess(children, total));
 
     } catch (err) {
         yield put(showGlobalError(true, err));
