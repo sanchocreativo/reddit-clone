@@ -3,8 +3,9 @@ import ListItems from './subComponents/ListItems';
 import ListItemSkeleton from './subComponents/ListItemSkeleton';
 import styles from './listContainer.module.scss';
 
-const ListContainer = ({ children, className, loading, skeletonColumn = 3, skeletonRow = 3, onClickItem, customSkeleton, ...props }) => {
+const ListContainer = ({ children, className, loading, skeletonColumn = 1, skeletonRow = 6, onClickItem, customSkeleton, ...props }) => {
 
+    
     if (!loading) {
         return (
             <ListItems

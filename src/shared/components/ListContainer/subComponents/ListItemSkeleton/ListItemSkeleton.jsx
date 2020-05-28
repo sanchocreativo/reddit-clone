@@ -2,6 +2,7 @@ import React, { memo, useState } from 'react';
 import SkeletonText from '../../../SkeletonText/SkeletonText';
 import ListItems from '../ListItems';
 import { buildArrayLength } from '../../../../helpers/commons';
+import styles from './listItemSkeleton.module.scss';
 
 const ListItemSkeleton = ({ skeletonRow, skeletonColumn, customSkeleton }) => {
     const [_skeletonColumn] = useState(buildArrayLength(skeletonColumn));
@@ -16,7 +17,19 @@ const ListItemSkeleton = ({ skeletonRow, skeletonColumn, customSkeleton }) => {
                             <div>
                                 {
                                     !customSkeleton ?
-                                        _skeletonColumn.map((childRow, x) => <SkeletonText key={`${i}-${x}`} />)
+                                        _skeletonColumn.map((childRow, x) => 
+                                        <div className={styles.divRow}  key={`${i}-${x}`}>
+
+                                            <SkeletonText  height="70px" width="80px" />
+
+                                            <div className={`${styles.divColumn} ${styles.skeletonPost}`}>
+                                                <SkeletonText  height="15px" width="230px" />
+                                                <SkeletonText  height="40px" width="230px" />
+                                                <SkeletonText  height="15px"  />
+                                            </div>
+                                        </div>
+                                        
+                                        )
                                         : customSkeleton
 
                                 }

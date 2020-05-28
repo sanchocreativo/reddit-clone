@@ -1,9 +1,14 @@
 export const scrolly = (action, event) => {
     let element = event.target;
-    if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+    if (element.scrollHeight - Math.ceil(element.scrollTop) === element.clientHeight) {
         action();
+        console.log(true);
+    }else {
+        console.log(false);
     }
 };
+
+
 
 export const makeQuery = filters => {
     if (!filters) return '';

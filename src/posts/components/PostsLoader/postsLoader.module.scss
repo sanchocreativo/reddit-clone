@@ -6,7 +6,7 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    height: calc(100% - 80px);
+    justify-content: center;
 }
 
 .minWidth {
@@ -16,20 +16,20 @@
 .flexPostSingle{
     display: flex;
     flex-direction: row;
-    flex: 1 1 50%;
+    flex: 1 1 43%;
 
     & .author{
         color: $thirdFontColor;
         font-weight: normal;
         font-size: 12px;
         display: flex;
-        margin-bottom: 5px;
+        flex-wrap: wrap;
     }
 
     & .subreddit {
         font-size: 13px;
         font-weight: bold;
-        color: $mainFontColor;
+        color: $thirdFontColor;
         margin-right: 10px;
         vertical-align: baseline;
     }
@@ -47,8 +47,13 @@
     & .content{
         display: flex;
         flex-direction: column;
-        flex: 1 1 30%;
+        flex: 0 0 40%!important;
         margin-left: 15px;
+        justify-content: space-around;
+        
+    }
+    .content > * {
+         margin:5px 0px;   
     }
     & .thumbnail{
         border-radius: 5px;
@@ -56,6 +61,7 @@
         width:75px;
         height: 75px;
         box-shadow: $boxshadow;
+        align-self: center;
     }
 }
 $breakpoint-tablet: 768px;
