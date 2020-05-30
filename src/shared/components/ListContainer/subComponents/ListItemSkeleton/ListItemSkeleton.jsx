@@ -9,12 +9,12 @@ const ListItemSkeleton = ({ skeletonRow, skeletonColumn, customSkeleton }) => {
     const [_skeletonRow] = useState(buildArrayLength(skeletonRow));
 
     return (
-        <div >
+        <div className={styles.listContainer}>
             {
                 <ListItems
                     listItems={
                         _skeletonRow.map((child, i) =>
-                            <div>
+                            <div >
                                 {
                                     !customSkeleton ?
                                         _skeletonColumn.map((childRow, x) => 

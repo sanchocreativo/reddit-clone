@@ -2,5 +2,13 @@
 
 .listContainer {
     flex: 1;
+    max-width:calc(50% - 10px);
     overflow: auto;
+}
+
+@media (max-width: $breakpoint-tablet) {
+    .listContainer {
+        width:100%;
+        min-width: 100%;
+    }
 }
