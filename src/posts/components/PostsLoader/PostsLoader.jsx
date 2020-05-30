@@ -10,7 +10,6 @@ import moment from 'moment';
 import { MessageSquare } from 'react-feather';
 import { defaultLimit as limitConf, defaultPage } from '../../../app/conf';
 
-
 const defaultFilters = {
     limit: limitConf,
     page: defaultPage
@@ -19,6 +18,10 @@ const defaultFilters = {
 const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
 
     const { fetching, data, total} = useSelector(postsSelector);
+
+    const images = ["jpg", "gif", "png", "jpeg"]
+    const videos = ["mp4", "3gp", "ogg", "flv"]
+    const extension = (url) => url.substr(url.length - 3);
 
     const [isOpenDialog, setIsOpenDialog] = useState(false);
     const [openPost, setOpenPost] = useState({});
@@ -76,7 +79,8 @@ const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
         }
     }, [setPosts])
 
-
+    console.log(openPost);
+    
 
     return (
         <>
@@ -104,7 +108,7 @@ const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
                                                 <span className={styles.authorName}>Posted by {post.data.author}</span>
                                                 <span className={styles.date}>{moment.unix(post.data.created_utc).fromNow()}</span>
                                             </div>
-                                            <div className={styles.title}>{post.data.title}</div>
+                                            <h3 className={styles.title}>{post.data.title}</h3>
                                             <div className={styles.divRow}>
                                                 <MessageSquare  color="#ccc" size={14} />
                                                 <span className={styles.subreddit}> {post.data.num_comments}</span>
@@ -120,19 +124,33 @@ const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
                     </ListContainer>
                 )}
                 {
-                    isOpenDialog &&
-                    <div open={isOpenDialog} onClick={closeOpenDialog}  >
-
-                        {openPost.title}
-
-                        {openPost.url &&
-                            <img src={openPost.url} alt={openPost.title} />
-                        }
+                    isOpenDialog && 
+                    <div className={styles.postOpened} open={isOpenDialog} onClick={closeOpenDialog}  >
+                       { console.log(images.includes(extension(openPost.url)))}
                         
+                        <h2 className={styles.title}>{openPost.title}</h2>
+                        {   
+                            images.includes(extension(openPost.url)) 
+                            ?
+                                
+                                <img src={openPost.url} alt={openPost.title} />
+                                : ( videos.includes(extension(openPost.url)) ? 
+                            
+                                <video width="320" height="240" controls autoPlay>
+                                    <source src={openPost.url} />
+                                </video>
+                                : 
+                                <a href={openPost.url} >{openPost.url}</a>
+                                )
+                        }
                     </div>
                 }
 
                 {!fetching && data.length === 0 && <ListNotFound />}
+                {!fetching  && !isOpenDialog &&
+                <ListNotFound title="Click on a post to see it right here!" subTitleShow={false} />
+                }
+
             </Content>
         </>
     );

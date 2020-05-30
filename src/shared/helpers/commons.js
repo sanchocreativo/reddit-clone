@@ -2,9 +2,6 @@ export const scrolly = (action, event) => {
     let element = event.target;
     if (element.scrollHeight - Math.ceil(element.scrollTop) === element.clientHeight) {
         action();
-        console.log(true);
-    }else {
-        console.log(false);
     }
 };
 

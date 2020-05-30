@@ -1,6 +1,19 @@
 @import '../../../../../shared/styles/common.scss';
+@import '../../../../../shared/styles/variables.scss';
 
 .skeletonPost{
     flex: 0 0 100%!important;
     margin-left: 15px;
+}
+
+.listContainer {
+    flex: 1;
+    width:calc(50% - 10px);
+    overflow: auto;
+}
+
+@media (max-width: $breakpoint-tablet) {
+    .listContainer {
+        width:100%;
+    }
 }

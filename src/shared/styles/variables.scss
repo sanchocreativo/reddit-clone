@@ -1,5 +1,4 @@
 $fontFamily: Montserrat, sans-serif;
-
 $primaryColor: var(--primaryColor);
 $primaryColorHover: var(--primaryColorHover);
 $primaryColorTransparent: var(--primaryColorTransparent);
@@ -36,6 +35,9 @@ $skeletonBackgroundColor: var(--skeletonBackgroundColor);
 $boxshadow: var(--boxshadow);
 $borderRadius: var(--borderRadius);
 $defaultPadding: var(--defaultPadding);
+
+$breakpoint-tablet: 768px;
+
 
 :export {
     borderRadiusCard: $borderRadius;
