@@ -7,6 +7,7 @@ export const getPosts = (filters) =>
         method: 'get',
         url: `${redditDomain}/top.json?${makeQuery(filters)}`,
         headers: {
-            notCachedResponse: true
+            notCachedResponse: true,
+            "Access-Control-Allow-Origin": "*"
         },
     });

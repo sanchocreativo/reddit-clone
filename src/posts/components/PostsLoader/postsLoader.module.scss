@@ -18,6 +18,10 @@
     flex-direction: row;
     flex: 1 1 43%;
 
+    & .commentIcon{
+        margin-right: 5px;
+    }
+
     & .author{
         color: $thirdFontColor;
         font-weight: normal;
@@ -47,7 +51,7 @@
     & .content{
         display: flex;
         flex-direction: column;
-        flex: 0 0 40%!important;
+        flex: 0 0 87%!important;
         margin-left: 15px;
         justify-content: space-around;
         
@@ -63,6 +67,11 @@
         box-shadow: $boxshadow;
         align-self: center;
     }
+
+    & .bottomSection{
+        @extend .divRow;
+        align-items: center;
+    }
 }
 
 .postOpened{
@@ -72,6 +81,16 @@
     display: flex;
     margin-left: 20px;
     overflow: auto;
+
+    & .closeLink{
+        align-self: flex-end;
+        cursor: pointer;
+        margin-right: 15px;
+        & :hover{
+            transform: scale(1.1);
+            transition:all 0.20s ease;
+        }
+    }
 
     & h2 {
         color: $mainFontColor;

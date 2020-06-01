@@ -4,10 +4,11 @@ import HeaderPosts from '../HeaderPosts';
 import Content from '../../../shared/components/Content';
 import ListNotFound from '../../../shared/components/ListNotFound';
 import ListContainer from '../../../shared/components/ListContainer';
+import Button from '../../../shared/components/Button';
 import {  useSelector } from "react-redux";
 import { postsSelector } from "../../selectors/posts"
 import moment from 'moment';
-import { MessageSquare } from 'react-feather';
+import { MessageSquare, X } from 'react-feather';
 import { defaultLimit as limitConf, defaultPage } from '../../../app/conf';
 
 const defaultFilters = {
@@ -20,8 +21,10 @@ const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
     const { fetching, data, total} = useSelector(postsSelector);
 
     const images = ["jpg", "gif", "png", "jpeg"]
-    const videos = ["mp4", "3gp", "ogg", "flv"]
+    const videos = ["https://v.redd.it/"]
     const extension = (url) => url.substr(url.length - 3);
+    const extensionVideo = (url) => url.substr(0, 18);
+
 
     const [isOpenDialog, setIsOpenDialog] = useState(false);
     const [openPost, setOpenPost] = useState({});
@@ -85,6 +88,7 @@ const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
     return (
         <>
             <HeaderPosts history={history} />
+            
 
             <Content>
              
@@ -109,10 +113,17 @@ const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
                                                 <span className={styles.date}>{moment.unix(post.data.created_utc).fromNow()}</span>
                                             </div>
                                             <h3 className={styles.title}>{post.data.title}</h3>
-                                            <div className={styles.divRow}>
-                                                <MessageSquare  color="#ccc" size={14} />
+                                            <div className={styles.bottomSection}>
+                                                <div className={styles.commentIcon}>
+                                                    <MessageSquare  color="#ccc" size={14} />
+                                                </div>
                                                 <span className={styles.subreddit}> {post.data.num_comments}</span>
-                                                <div className={styles.subreddit}>{post.data.score} upvotes </div>
+                                                
+                                                <Button>
+                                                    <X  color="#fff" size={23} />
+                                                    Dismiss Post
+                                                </Button>
+                                                {/* <div className={styles.subreddit}>{post.data.score} upvotes </div> */}
 
                                             </div>
 
@@ -125,19 +136,23 @@ const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
                 )}
                 {
                     isOpenDialog && 
-                    <div className={styles.postOpened} open={isOpenDialog} onClick={closeOpenDialog}  >
-                       { console.log(images.includes(extension(openPost.url)))}
+                    <div className={styles.postOpened} open={isOpenDialog} onClick={closeOpenDialog}>
+
+                        <div className={styles.closeLink}>
+                            <X  color="#888" size={23} />
+                        </div>
+
+                       { console.log(videos.includes(extensionVideo(openPost.url)))}
                         
                         <h2 className={styles.title}>{openPost.title}</h2>
                         {   
                             images.includes(extension(openPost.url)) 
                             ?
-                                
                                 <img src={openPost.url} alt={openPost.title} />
-                                : ( videos.includes(extension(openPost.url)) ? 
+                                : ( videos.includes(extensionVideo(openPost.url)) ? 
                             
-                                <video width="320" height="240" controls autoPlay>
-                                    <source src={openPost.url} />
+                                <video width={openPost.media.reddit_video.width} height={openPost.media.reddit_video.height} controls autoPlay>
+                                    <source src={openPost.media.reddit_video.fallback_url} />
                                 </video>
                                 : 
                                 <a href={openPost.url} >{openPost.url}</a>
