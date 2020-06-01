@@ -1,9 +1,9 @@
 @import "../../../shared/styles/variables.scss";
 
 .button {
-    background: $primaryColor;
+    background: transparent;
     align-items: center;
-    border: none;
+    border: 1px solid $primaryColor;
     border-radius: $borderRadius;
     box-sizing: border-box;
     color: $fontColor;
