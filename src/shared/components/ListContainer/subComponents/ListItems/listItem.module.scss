@@ -1,0 +1,42 @@
+@import '../../../../../shared/styles/variables.scss';
+
+
+.wrapper {
+
+    & >.listItem {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: $mainFontColor;
+        font-size: 14px;
+        font-weight: 600;
+        margin: 0;
+        padding: 8px 0;
+        box-sizing: border-box;
+        cursor: pointer;
+
+        & > div {
+            flex: 1;
+        }
+
+        & > span {
+            flex: 1;
+        }
+
+        & > * {
+           
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+
+    & > hr {
+        background-color: $listItemDivider;
+        border: none;
+        flex-shrink: 0;
+        height: 1px;
+        margin: 0;
+        opacity: 0.1;
+    }
+
+}

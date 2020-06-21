@@ -23,11 +23,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 fetching: false,
-                data:action.payload.data,
+                data: action.payload.data,
                 total:
-                (!action.payload.total || action.payload.total === 0) ? state.total : action.payload.total
+                (!action.payload.total || action.payload.total === 0) ? state.total : action.payload.total,
             };
         }
+      
         case GET_POSTS_FAILURE: {
             return {
                 ...state,

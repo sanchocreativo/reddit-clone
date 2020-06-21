@@ -5,6 +5,7 @@ import app from './app';
 import home from '../../home/reducers';
 import config from './config';
 import posts from "../../posts/reducers";
+import readStatus from "../../readStatus/reducers";
 
 const persistConfig = {
     key: 'root',
@@ -13,10 +14,10 @@ const persistConfig = {
         'app',
         'home',
         'posts',
-
     ],
     whitelist: [
-        'config'
+        'config',
+        'readStatus'
     ]
 };
 
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
     app,
     home,
     config,
-    posts
+    posts,
+    readStatus
 });
 
 export default persistReducer(persistConfig, rootReducer);
