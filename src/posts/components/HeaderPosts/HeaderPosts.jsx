@@ -3,11 +3,10 @@ import styles from './headerPosts.module.scss';
 import { X } from 'react-feather';
 import Button from '../../../shared/components/Button';
 
-const HeaderPosts = () => {
+const HeaderPosts = ({onClickHideContent}) => {
     return (
         <div className={styles.header}>
-            <Button>
-                <X  color="#fff" size={23} />
+            <Button onClick={onClickHideContent}>
                 Dismiss All Posts
             </Button>
         </div>

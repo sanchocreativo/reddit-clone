@@ -1,6 +1,7 @@
 @import '../../../shared/styles/variables.scss';
 @import '../../../shared/styles/common.scss';
 
+
 .content {
     flex: 1;
     box-sizing: border-box;
@@ -13,10 +14,37 @@
     min-width: 130px;
 }
 
+.hidden{
+    display: none;
+}
+
+.animation {
+    height: 0;
+}
+
+.readStatus{
+    margin-top: 4px;
+    margin-right: 10px;
+    height:10px;
+    width:10px;
+    border-radius: 50%;
+    background-color: $primaryColor;
+}
+
+.unreadStatus{
+    margin-top: 4px;
+    margin-right: 10px;
+    height:10px;
+    width:10px;
+    border-radius: 50%;
+    background-color: $thirdFontColor;
+}
+
 .flexPostSingle{
     display: flex;
     flex-direction: row;
     flex: 1 1 43%;
+    transition: .5s ease-in;
 
     & .commentIcon{
         margin-right: 5px;
@@ -100,8 +128,13 @@
         width: 80%;
         height:80%;
         max-height:100%;
-        object-fit: cover;
+        object-fit: contain;
     }
+}
+
+
+.animation{
+
 }
 
 @media (min-width: $breakpoint-tablet) {

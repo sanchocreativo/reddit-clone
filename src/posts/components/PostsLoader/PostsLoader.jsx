@@ -7,6 +7,7 @@ import ListContainer from '../../../shared/components/ListContainer';
 import Button from '../../../shared/components/Button';
 import {  useSelector } from "react-redux";
 import { postsSelector } from "../../selectors/posts"
+import { postsReadenSelector } from "../../../readStatus/selectors/readStatus"
 import moment from 'moment';
 import { MessageSquare, X } from 'react-feather';
 import { defaultLimit as limitConf, defaultPage } from '../../../app/conf';
@@ -16,10 +17,12 @@ const defaultFilters = {
     page: defaultPage
 }
 
-const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
+const PostsLoader = ({ history, getPostsRequest, setPosts, postIsReaden }) => {
 
     const { fetching, data, total} = useSelector(postsSelector);
 
+    const alreadyReaden = useSelector(postsReadenSelector);
+    
     const images = ["jpg", "gif", "png", "jpeg"]
     const videos = ["https://v.redd.it/"]
     const extension = (url) => url.substr(url.length - 3);
@@ -28,12 +31,23 @@ const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
 
     const [isOpenDialog, setIsOpenDialog] = useState(false);
     const [openPost, setOpenPost] = useState({});
+    const [currentData, setData] = useState([]);
     const [page, setPage] = useState(defaultFilters.page);
     const [limit, setLimit] = useState(defaultFilters.limit);
 
-    const selectposts = (index) => {
-        setOpenPost(data[index]["data"]);
+    const deletePost = id => {
+        setData(currentData.filter(post => post.data.id !== id));
+	}
+
+    const onClickHideContent = () => {
+        setData([]);
+    }
+
+    const selectposts = (id) => {
+        const returnPost = currentData.filter(post => post.data.id === id)
+        setOpenPost(returnPost[0].data);
         setIsOpenDialog(true);
+        postIsReaden(id)
     }
 
     const closeOpenDialog = () => {
@@ -53,7 +67,6 @@ const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
             page: _page
         }
 
-        console.log(filters);
 
         setPage(_page);
         getPostsRequest(filters);
@@ -69,10 +82,12 @@ const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
 
         setPage( defaultFilters.page);
         getPostsRequest(filters);
+        
     }, [ setPosts, getPostsRequest]);
 
     useEffect(() => {
         getPosts();
+        
     }, [getPosts]);
 
     
@@ -82,17 +97,20 @@ const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
         }
     }, [setPosts])
 
-    console.log(openPost);
-    
+    useEffect(() => {         
+        if (data.length) {
+            setData(data);   
+        }
+    },[data]);
 
+    
     return (
         <>
-            <HeaderPosts history={history} />
+            <HeaderPosts history={history} onClickHideContent={onClickHideContent} />
             
-
             <Content>
-             
-                {(fetching || data.length > 0) && (
+              
+                {(fetching || currentData.length > 0) && (
                     <ListContainer
                         loading={fetching && page === 1}
                         totalItems={total}
@@ -100,14 +118,17 @@ const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
                         onScrollBottomAction={getMoreItems}
                     >
                         {
-                            data.map((post, index) => (
-                                <div key={index} onClick={selectposts.bind(this, index)}>
+                            currentData.map((post, index) => (
+                                
+                                <div key={post.data.id}  onClick={selectposts.bind(this, post.data.id)}>
                                     <div className={styles.flexPostSingle}>
 
                                         <img className={styles.thumbnail} src={post.data.thumbnail} alt={post.data.title} />
                                       
                                         <div className={styles.content}>
                                             <div className={styles.author}>
+                                                <span className={ alreadyReaden.some(r => post.data.id === r) ? styles.unreadStatus : styles.readStatus}></span>
+
                                                 <span className={styles.subreddit}>{post.data.subreddit_name_prefixed}</span>
                                                 <span className={styles.authorName}>Posted by {post.data.author}</span>
                                                 <span className={styles.date}>{moment.unix(post.data.created_utc).fromNow()}</span>
@@ -119,16 +140,22 @@ const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
                                                 </div>
                                                 <span className={styles.subreddit}> {post.data.num_comments}</span>
                                                 
-                                                <Button>
-                                                    <X  color="#fff" size={23} />
+                                                <Button 
+                                                    onClick={(e) => {
+                                                        e.stopPropagation(); 
+                                                        deletePost(post.data.id)}
+                                                    }
+                                                >
                                                     Dismiss Post
                                                 </Button>
-                                                {/* <div className={styles.subreddit}>{post.data.score} upvotes </div> */}
+
+                                               <div className={styles.subreddit}>{post.data.score} upvotes </div> 
 
                                             </div>
 
                                         </div>
                                     </div>
+                               
                                 </div>
                             ))
                         }
@@ -136,14 +163,12 @@ const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
                 )}
                 {
                     isOpenDialog && 
-                    <div className={styles.postOpened} open={isOpenDialog} onClick={closeOpenDialog}>
+                    <div className={styles.postOpened} open={isOpenDialog} >
 
-                        <div className={styles.closeLink}>
+                        <div onClick={closeOpenDialog} className={styles.closeLink}>
                             <X  color="#888" size={23} />
                         </div>
 
-                       { console.log(videos.includes(extensionVideo(openPost.url)))}
-                        
                         <h2 className={styles.title}>{openPost.title}</h2>
                         {   
                             images.includes(extension(openPost.url)) 
@@ -165,7 +190,7 @@ const PostsLoader = ({ history, getPostsRequest, setPosts }) => {
                 {!fetching  && !isOpenDialog &&
                 <ListNotFound title="Click on a post to see it right here!" subTitleShow={false} />
                 }
-
+            
             </Content>
         </>
     );
