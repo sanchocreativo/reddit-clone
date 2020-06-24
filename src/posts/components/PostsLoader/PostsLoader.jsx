@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState, useCallback, useRef } from 'react';
+import React, { memo, useEffect, useState, useCallback } from 'react';
 import styles from './postsLoader.module.scss';
 import HeaderPosts from '../HeaderPosts';
 import Content from '../../../shared/components/Content';
@@ -9,7 +9,7 @@ import {  useSelector } from "react-redux";
 import { postsSelector } from "../../selectors/posts"
 import { postsReadenSelector } from "../../../readStatus/selectors/readStatus"
 import moment from 'moment';
-import { MessageSquare,X, Download } from 'react-feather';
+import { MessageSquare, X } from 'react-feather';
 import { defaultLimit as limitConf, defaultPage } from '../../../app/conf';
 
 const defaultFilters = {
@@ -28,7 +28,6 @@ const PostsLoader = ({ history, getPostsRequest, setPosts, postIsReaden }) => {
     const extension = (url) => url.substr(url.length - 3);
     const extensionVideo = (url) => url.substr(0, 18);
 
-    const inputEl = useRef(null);
 
     const [isOpenDialog, setIsOpenDialog] = useState(false);
     const [openPost, setOpenPost] = useState({});
@@ -54,8 +53,6 @@ const PostsLoader = ({ history, getPostsRequest, setPosts, postIsReaden }) => {
             canvas.height = img.naturalHeight;
             context.drawImage(img, 0, 0 );
             const canvasdata = canvas.toDataURL("image/jpg");
-            console.log(canvasdata);
-            
             const a = document.createElement("a");
             a.download = `${postImage}`;
             a.href = canvasdata;
@@ -67,6 +64,7 @@ const PostsLoader = ({ history, getPostsRequest, setPosts, postIsReaden }) => {
     }
 
     const selectposts = (id) => {
+        setOpenPost({});
         const returnPost = currentData.filter(post => post.data.id === id)
         setOpenPost(returnPost[0].data);
         setIsOpenDialog(true);
@@ -80,7 +78,6 @@ const PostsLoader = ({ history, getPostsRequest, setPosts, postIsReaden }) => {
 
     const getMoreItems = () => {
         const _page = page + 1;
-
         const _limit = limit + 10;
 
         setLimit(_limit);
@@ -89,7 +86,6 @@ const PostsLoader = ({ history, getPostsRequest, setPosts, postIsReaden }) => {
             limit: limit,
             page: _page
         }
-
 
         setPage(_page);
         getPostsRequest(filters);
@@ -197,22 +193,22 @@ const PostsLoader = ({ history, getPostsRequest, setPosts, postIsReaden }) => {
                             images.includes(extension(openPost.url)) 
                             ?
                                 <>
-                                    <img ref={inputEl}  src={openPost.url} id="myImg" alt={openPost.title} />
+                                    <img src={openPost.url} alt={openPost.title} className={styles.selfCenter}/>
                                     <div
+                                        className={`${styles.selfCenter} ${styles.marginTop}`}
                                         onClick={(e) => {
                                             e.stopPropagation(); 
                                             convertImgToCanvas(openPost.url)}
                                         }
                                     >
                                         <Button>
-                                        <Download  color="green" size={14} />
                                             Download Image
                                         </Button>
                                     </div>
                                 </>
                                 : ( videos.includes(extensionVideo(openPost.url)) ? 
                             
-                                <video width={openPost.media.reddit_video.width} height={openPost.media.reddit_video.height} controls autoPlay>
+                                <video className={styles.selfCenter} width="100%" height="100%" controls autoPlay>
                                     <source src={openPost.media.reddit_video.fallback_url} />
                                 </video>
                                 : 
