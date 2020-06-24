@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState, useCallback } from 'react';
+import React, { memo, useEffect, useState, useCallback, useRef } from 'react';
 import styles from './postsLoader.module.scss';
 import HeaderPosts from '../HeaderPosts';
 import Content from '../../../shared/components/Content';
@@ -9,7 +9,7 @@ import {  useSelector } from "react-redux";
 import { postsSelector } from "../../selectors/posts"
 import { postsReadenSelector } from "../../../readStatus/selectors/readStatus"
 import moment from 'moment';
-import { MessageSquare, X } from 'react-feather';
+import { MessageSquare,X, Download } from 'react-feather';
 import { defaultLimit as limitConf, defaultPage } from '../../../app/conf';
 
 const defaultFilters = {
@@ -28,6 +28,7 @@ const PostsLoader = ({ history, getPostsRequest, setPosts, postIsReaden }) => {
     const extension = (url) => url.substr(url.length - 3);
     const extensionVideo = (url) => url.substr(0, 18);
 
+    const inputEl = useRef(null);
 
     const [isOpenDialog, setIsOpenDialog] = useState(false);
     const [openPost, setOpenPost] = useState({});
@@ -41,6 +42,28 @@ const PostsLoader = ({ history, getPostsRequest, setPosts, postIsReaden }) => {
 
     const onClickHideContent = () => {
         setData([]);
+    }
+
+  
+    const convertImgToCanvas = (postImage) => {
+        var img = new Image();
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        img.onload = function() {
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            context.drawImage(img, 0, 0 );
+            const canvasdata = canvas.toDataURL("image/jpg");
+            console.log(canvasdata);
+            
+            const a = document.createElement("a");
+            a.download = `${postImage}`;
+            a.href = canvasdata;
+            document.body.appendChild(a);
+            a.click();  
+        }
+        img.src = `https://cors-anywhere.herokuapp.com/${postImage}`;
+        img.setAttribute('crossOrigin', 'anonymous');
     }
 
     const selectposts = (id) => {
@@ -173,7 +196,20 @@ const PostsLoader = ({ history, getPostsRequest, setPosts, postIsReaden }) => {
                         {   
                             images.includes(extension(openPost.url)) 
                             ?
-                                <img src={openPost.url} alt={openPost.title} />
+                                <>
+                                    <img ref={inputEl}  src={openPost.url} id="myImg" alt={openPost.title} />
+                                    <div
+                                        onClick={(e) => {
+                                            e.stopPropagation(); 
+                                            convertImgToCanvas(openPost.url)}
+                                        }
+                                    >
+                                        <Button>
+                                        <Download  color="green" size={14} />
+                                            Download Image
+                                        </Button>
+                                    </div>
+                                </>
                                 : ( videos.includes(extensionVideo(openPost.url)) ? 
                             
                                 <video width={openPost.media.reddit_video.width} height={openPost.media.reddit_video.height} controls autoPlay>
