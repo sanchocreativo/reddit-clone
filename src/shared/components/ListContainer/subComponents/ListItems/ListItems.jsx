@@ -5,21 +5,6 @@ import {  AnimatePresence } from "framer-motion"
 
 const ListItems = ({ listItems, className, ...props }) => {
  
-    const list = {
-        visible: {
-            opacity: 1,
-            transition: {
-            when: "beforeChildren",
-            staggerChildren: 0.3,
-            },
-        },
-        hidden: {
-            opacity: 1,
-            transition: {
-            when: "afterChildren",
-            },
-        },
-    }
     
     return (
         <Scrolly className={className} listItems={listItems}  {...props}>

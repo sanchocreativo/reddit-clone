@@ -43,7 +43,28 @@ const PostsLoader = ({ history, getPostsRequest, setPosts, postIsReaden }) => {
         setData([]);
     }
 
+  
+    const convertImgToCanvas = (postImage) => {
+        var img = new Image();
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        img.onload = function() {
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            context.drawImage(img, 0, 0 );
+            const canvasdata = canvas.toDataURL("image/jpg");
+            const a = document.createElement("a");
+            a.download = `${postImage}`;
+            a.href = canvasdata;
+            document.body.appendChild(a);
+            a.click();  
+        }
+        img.src = `https://cors-anywhere.herokuapp.com/${postImage}`;
+        img.setAttribute('crossOrigin', 'anonymous');
+    }
+
     const selectposts = (id) => {
+        setOpenPost({});
         const returnPost = currentData.filter(post => post.data.id === id)
         setOpenPost(returnPost[0].data);
         setIsOpenDialog(true);
@@ -57,7 +78,6 @@ const PostsLoader = ({ history, getPostsRequest, setPosts, postIsReaden }) => {
 
     const getMoreItems = () => {
         const _page = page + 1;
-
         const _limit = limit + 10;
 
         setLimit(_limit);
@@ -66,7 +86,6 @@ const PostsLoader = ({ history, getPostsRequest, setPosts, postIsReaden }) => {
             limit: limit,
             page: _page
         }
-
 
         setPage(_page);
         getPostsRequest(filters);
@@ -173,10 +192,23 @@ const PostsLoader = ({ history, getPostsRequest, setPosts, postIsReaden }) => {
                         {   
                             images.includes(extension(openPost.url)) 
                             ?
-                                <img src={openPost.url} alt={openPost.title} />
+                                <>
+                                    <img src={openPost.url} alt={openPost.title} className={styles.selfCenter}/>
+                                    <div
+                                        className={`${styles.selfCenter} ${styles.marginTop}`}
+                                        onClick={(e) => {
+                                            e.stopPropagation(); 
+                                            convertImgToCanvas(openPost.url)}
+                                        }
+                                    >
+                                        <Button>
+                                            Download Image
+                                        </Button>
+                                    </div>
+                                </>
                                 : ( videos.includes(extensionVideo(openPost.url)) ? 
                             
-                                <video width={openPost.media.reddit_video.width} height={openPost.media.reddit_video.height} controls autoPlay>
+                                <video className={styles.selfCenter} width="100%" height="100%" controls autoPlay>
                                     <source src={openPost.media.reddit_video.fallback_url} />
                                 </video>
                                 : 
