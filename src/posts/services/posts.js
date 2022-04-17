@@ -6,8 +6,4 @@ export const getPosts = (filters) =>
     axios({
         method: 'get',
         url: `${redditDomain}/top.json?${makeQuery(filters)}`,
-        headers: {
-            notCachedResponse: true,
-            "Access-Control-Allow-Origin": "*"
-        },
     });

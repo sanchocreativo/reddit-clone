@@ -9,7 +9,7 @@ import { showGlobalError } from '../../app/actions/app';
 
 const getPostsWorker = function* ({ payload: { filters } }) {
     try {
-
+        
         const { data: {data : {children}} } = yield call(getPosts, filters);
 
         const total = 50;
