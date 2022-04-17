@@ -1,0 +1,1 @@
+{"version":3,"sources":["entryPoint.module.scss"],"names":[],"mappings":"AAAA,6BACI,QAAO,CACP,YAAa,CACb,qBAAsB","file":"posts.9c2a8735.chunk.css","sourcesContent":[".container {\n    flex: 1;\n    display: flex;\n    flex-direction: column;\n}"]}

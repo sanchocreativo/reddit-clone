@@ -1,0 +1,40 @@
+{
+  "files": {
+    "PostsLoader.css": "/reddit-clone/static/css/PostsLoader.a4472f37.chunk.css",
+    "PostsLoader.js": "/reddit-clone/static/js/PostsLoader.a70f316a.chunk.js",
+    "PostsLoader.js.map": "/reddit-clone/static/js/PostsLoader.a70f316a.chunk.js.map",
+    "home.css": "/reddit-clone/static/css/home.5db7a605.chunk.css",
+    "home.js": "/reddit-clone/static/js/home.4a5942db.chunk.js",
+    "home.js.map": "/reddit-clone/static/js/home.4a5942db.chunk.js.map",
+    "main.css": "/reddit-clone/static/css/main.10c86981.chunk.css",
+    "main.js": "/reddit-clone/static/js/main.8b78a615.chunk.js",
+    "main.js.map": "/reddit-clone/static/js/main.8b78a615.chunk.js.map",
+    "posts.css": "/reddit-clone/static/css/posts.9c2a8735.chunk.css",
+    "posts.js": "/reddit-clone/static/js/posts.30761116.chunk.js",
+    "posts.js.map": "/reddit-clone/static/js/posts.30761116.chunk.js.map",
+    "runtime-main.js": "/reddit-clone/static/js/runtime-main.b9f5c2f2.js",
+    "runtime-main.js.map": "/reddit-clone/static/js/runtime-main.b9f5c2f2.js.map",
+    "static/js/5.03c07fe5.chunk.js": "/reddit-clone/static/js/5.03c07fe5.chunk.js",
+    "static/js/5.03c07fe5.chunk.js.map": "/reddit-clone/static/js/5.03c07fe5.chunk.js.map",
+    "static/js/6.5488580e.chunk.js": "/reddit-clone/static/js/6.5488580e.chunk.js",
+    "static/js/6.5488580e.chunk.js.map": "/reddit-clone/static/js/6.5488580e.chunk.js.map",
+    "static/js/7.cad2cd28.chunk.js": "/reddit-clone/static/js/7.cad2cd28.chunk.js",
+    "static/js/7.cad2cd28.chunk.js.map": "/reddit-clone/static/js/7.cad2cd28.chunk.js.map",
+    "index.html": "/reddit-clone/index.html",
+    "precache-manifest.5df36a2c34601fb0cae38eaf6e2d1c08.js": "/reddit-clone/precache-manifest.5df36a2c34601fb0cae38eaf6e2d1c08.js",
+    "service-worker.js": "/reddit-clone/service-worker.js",
+    "static/css/PostsLoader.a4472f37.chunk.css.map": "/reddit-clone/static/css/PostsLoader.a4472f37.chunk.css.map",
+    "static/css/home.5db7a605.chunk.css.map": "/reddit-clone/static/css/home.5db7a605.chunk.css.map",
+    "static/css/main.10c86981.chunk.css.map": "/reddit-clone/static/css/main.10c86981.chunk.css.map",
+    "static/css/posts.9c2a8735.chunk.css.map": "/reddit-clone/static/css/posts.9c2a8735.chunk.css.map",
+    "static/js/5.03c07fe5.chunk.js.LICENSE.txt": "/reddit-clone/static/js/5.03c07fe5.chunk.js.LICENSE.txt",
+    "static/js/6.5488580e.chunk.js.LICENSE.txt": "/reddit-clone/static/js/6.5488580e.chunk.js.LICENSE.txt",
+    "static/js/7.cad2cd28.chunk.js.LICENSE.txt": "/reddit-clone/static/js/7.cad2cd28.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b9f5c2f2.js",
+    "static/js/5.03c07fe5.chunk.js",
+    "static/css/main.10c86981.chunk.css",
+    "static/js/main.8b78a615.chunk.js"
+  ]
+}
