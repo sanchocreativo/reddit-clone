@@ -59,7 +59,7 @@ const PostsLoader = ({ history, getPostsRequest, setPosts, postIsReaden }) => {
             document.body.appendChild(a);
             a.click();  
         }
-        img.src = `https://cors-anywhere.herokuapp.com/${postImage}`;
+        img.src = `${postImage}`;
         img.setAttribute('crossOrigin', 'anonymous');
     }
 
